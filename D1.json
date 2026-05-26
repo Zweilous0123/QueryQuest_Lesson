@@ -1,0 +1,284 @@
+{
+  "module": "D.1",
+  "title": "Introduction & SQL",
+  "description": "Overview of SQL, relational databases, and foundational concepts.",
+  "topics": [
+    {
+      "id": "d1-t1",
+      "title": "What is SQL",
+      "completed": false,
+      "content": {
+        "heading": "1.1 What is SQL?",
+        "intro": "SQL (Structured Query Language) is the standard language used to communicate with relational databases. It allows you to create, read, update, and delete data — commonly known as CRUD operations. SQL is not a programming language in the traditional sense, but a query language designed specifically for managing data.",
+        "sections": [
+          {
+            "icon": "💡",
+            "title": "Why SQL?",
+            "body": "Almost every application in the world that stores data uses SQL behind the scenes — from social media platforms to banking systems. Learning SQL gives you the ability to interact directly with the data that powers these systems.",
+            "bullets": [
+              "SQL is used by developers, data analysts, database administrators, and business intelligence teams.",
+              "It works across many database systems: MySQL, PostgreSQL, SQLite, SQL Server, Oracle, and more.",
+              "SQL syntax is consistent — once you learn it, you can use it on almost any database."
+            ]
+          },
+          {
+            "icon": "💻",
+            "title": "Your first SQL statement",
+            "body": "The most basic SQL command is SELECT. It retrieves data from a table.",
+            "code": "SELECT * FROM users;"
+          }
+        ]
+      }
+    },
+    {
+      "id": "d1-t2",
+      "title": "Relational Databases Overview",
+      "completed": false,
+      "content": {
+        "heading": "1.2 Relational Databases Overview",
+        "intro": "A relational database stores data in tables that are related to each other. The concept was introduced by Edgar F. Codd in 1970 and remains the most widely used database model today.",
+        "sections": [
+          {
+            "icon": "🔗",
+            "title": "What makes a database 'relational'?",
+            "body": "In a relational database, data is organized into tables (also called relations). These tables can be linked together using keys, allowing you to avoid duplicating data and maintain consistency.",
+            "bullets": [
+              "Each table represents one type of entity (e.g. users, orders, products).",
+              "Tables are linked using primary keys and foreign keys.",
+              "You can query across multiple tables using JOIN operations."
+            ]
+          },
+          {
+            "icon": "📊",
+            "title": "Example",
+            "body": "A simple e-commerce database might have these related tables:",
+            "code": "users (id, name, email)\norders (id, user_id, total)\nproducts (id, name, price)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "d1-t3",
+      "title": "Database Management Systems (DBMS)",
+      "completed": false,
+      "content": {
+        "heading": "1.3 Database Management Systems (DBMS)",
+        "intro": "A Database Management System (DBMS) is software that manages databases. It acts as an interface between users and the database, handling storage, retrieval, and security of data.",
+        "sections": [
+          {
+            "icon": "🛠️",
+            "title": "Popular RDBMS",
+            "body": "These are the most widely used Relational Database Management Systems:",
+            "bullets": [
+              "MySQL — open source, widely used in web applications (WordPress, Facebook).",
+              "PostgreSQL — powerful open source RDBMS with advanced features.",
+              "SQLite — lightweight, file-based, perfect for mobile apps and learning.",
+              "Microsoft SQL Server — enterprise-grade, used in large organizations.",
+              "Oracle Database — used in large enterprise and financial systems."
+            ]
+          },
+          {
+            "icon": "💡",
+            "title": "What does a DBMS do?",
+            "body": "A DBMS handles creating and managing databases, controlling access and permissions, ensuring data integrity, backup and recovery, and concurrent access by multiple users."
+          }
+        ]
+      }
+    },
+    {
+      "id": "d1-t4",
+      "title": "Tables, Rows, Columns – Structure of Data",
+      "completed": false,
+      "content": {
+        "heading": "1.4 Tables, Rows, and Columns",
+        "intro": "In a relational database, all data is stored in tables. Understanding the structure of a table is the foundation of everything you will do in SQL.",
+        "sections": [
+          {
+            "icon": "📋",
+            "title": "Table structure",
+            "body": "A table is made up of columns (fields) and rows (records).",
+            "bullets": [
+              "Column — defines the type of data (e.g. name, age, email). Each column has a data type.",
+              "Row — a single record or entry in the table (e.g. one user).",
+              "Cell — the intersection of a row and column, holds one value."
+            ]
+          },
+          {
+            "icon": "💻",
+            "title": "Example table: users",
+            "body": "Here is what a users table looks like:",
+            "code": "id  | name    | email\n----|---------|------------------\n1   | Alice   | alice@email.com\n2   | Bob     | bob@email.com\n3   | Carol   | carol@email.com"
+          }
+        ]
+      }
+    },
+    {
+      "id": "d1-t5",
+      "title": "Understanding Primary Key",
+      "completed": false,
+      "content": {
+        "heading": "1.5 Understanding Primary Key",
+        "intro": "A Primary Key is a column (or combination of columns) that uniquely identifies each row in a table. No two rows can have the same primary key value, and it cannot be NULL.",
+        "sections": [
+          {
+            "icon": "🔑",
+            "title": "Rules of a Primary Key",
+            "body": "A primary key must follow these rules:",
+            "bullets": [
+              "Must be unique — no two rows can have the same value.",
+              "Cannot be NULL — every row must have a value.",
+              "Each table can only have one primary key.",
+              "Usually uses an auto-incrementing integer (1, 2, 3...)."
+            ]
+          },
+          {
+            "icon": "💻",
+            "title": "Example",
+            "body": "The id column below is the primary key:",
+            "code": "CREATE TABLE users (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  name VARCHAR(100),\n  email VARCHAR(100)\n);"
+          }
+        ]
+      }
+    },
+    {
+      "id": "d1-t6",
+      "title": "Understanding Foreign Key",
+      "completed": false,
+      "content": {
+        "heading": "1.6 Understanding Foreign Key",
+        "intro": "A Foreign Key is a column in one table that refers to the Primary Key in another table. It creates a relationship between two tables and enforces referential integrity.",
+        "sections": [
+          {
+            "icon": "🔗",
+            "title": "How Foreign Keys work",
+            "body": "A foreign key ensures that a value in one table must exist in another table first. This prevents orphaned records.",
+            "bullets": [
+              "The table containing the foreign key is called the child table.",
+              "The table being referenced is called the parent table.",
+              "You cannot insert a foreign key value that does not exist in the parent table."
+            ]
+          },
+          {
+            "icon": "💻",
+            "title": "Example",
+            "body": "The user_id in orders references id in users:",
+            "code": "CREATE TABLE orders (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  user_id INT,\n  total DECIMAL(10,2),\n  FOREIGN KEY (user_id) REFERENCES users(id)\n);"
+          }
+        ]
+      }
+    },
+    {
+      "id": "d1-t7",
+      "title": "Common Data Types (INT, VARCHAR, CHAR, DATE, DECIMAL)",
+      "completed": false,
+      "content": {
+        "heading": "1.7 Common Data Types",
+        "intro": "Every column in a table must have a data type. The data type tells the database what kind of data is allowed in that column — numbers, text, dates, etc.",
+        "sections": [
+          {
+            "icon": "📝",
+            "title": "Most common data types",
+            "body": "Here are the data types you will use most often:",
+            "bullets": [
+              "INT — whole numbers (e.g. 1, 42, 1000). Used for IDs, counts, ages.",
+              "VARCHAR(n) — variable-length text up to n characters (e.g. names, emails).",
+              "CHAR(n) — fixed-length text, always n characters (e.g. country codes: 'PH', 'US').",
+              "DATE — stores a date in YYYY-MM-DD format (e.g. 2024-01-15).",
+              "DECIMAL(p,s) — exact decimal numbers (e.g. prices: 199.99). p = total digits, s = decimal places."
+            ]
+          },
+          {
+            "icon": "💻",
+            "title": "Example using multiple data types",
+            "body": "A products table using different data types:",
+            "code": "CREATE TABLE products (\n  id       INT PRIMARY KEY AUTO_INCREMENT,\n  name     VARCHAR(200),\n  code     CHAR(10),\n  price    DECIMAL(10,2),\n  created  DATE\n);"
+          }
+        ]
+      }
+    },
+    {
+      "id": "d1-t8",
+      "title": "Introduction to Constraints – NOT NULL, UNIQUE, CHECK, DEFAULT",
+      "completed": false,
+      "content": {
+        "heading": "1.8 Introduction to Constraints",
+        "intro": "Constraints are rules applied to columns that control what data is allowed. They help maintain data integrity by preventing invalid or inconsistent data from being entered.",
+        "sections": [
+          {
+            "icon": "🛡️",
+            "title": "The four main constraints",
+            "body": "These constraints are the most commonly used:",
+            "bullets": [
+              "NOT NULL — the column must have a value; it cannot be empty.",
+              "UNIQUE — every value in the column must be different across all rows.",
+              "CHECK — only allows values that pass a specific condition (e.g. age > 0).",
+              "DEFAULT — sets an automatic value if no value is provided during insert."
+            ]
+          },
+          {
+            "icon": "💻",
+            "title": "Example with all four constraints",
+            "body": "A users table with constraints applied:",
+            "code": "CREATE TABLE users (\n  id       INT PRIMARY KEY AUTO_INCREMENT,\n  name     VARCHAR(100) NOT NULL,\n  email    VARCHAR(100) UNIQUE,\n  age      INT CHECK (age >= 18),\n  status   VARCHAR(20) DEFAULT 'active'\n);"
+          }
+        ]
+      }
+    },
+    {
+      "id": "d1-t9",
+      "title": "Importance of Data Integrity",
+      "completed": false,
+      "content": {
+        "heading": "1.9 Importance of Data Integrity",
+        "intro": "Data integrity means that the data in your database is accurate, consistent, and reliable. Without data integrity, your application could produce wrong results, make incorrect decisions, or lose important information.",
+        "sections": [
+          {
+            "icon": "✅",
+            "title": "Types of data integrity",
+            "body": "There are four main types of data integrity in relational databases:",
+            "bullets": [
+              "Entity integrity — every row is uniquely identified (primary key).",
+              "Referential integrity — relationships between tables are consistent (foreign key).",
+              "Domain integrity — values in a column are valid for that data type and constraints.",
+              "User-defined integrity — custom business rules enforced through CHECK constraints or triggers."
+            ]
+          },
+          {
+            "icon": "💡",
+            "title": "Why it matters",
+            "body": "Poor data integrity leads to duplicate records, broken relationships, incorrect reports, and security vulnerabilities. Enforcing integrity at the database level is always better than relying on application code alone."
+          }
+        ]
+      }
+    },
+    {
+      "id": "d1-t10",
+      "title": "Overview of DDL, DML, DQL, DCL, TCL",
+      "completed": false,
+      "content": {
+        "heading": "1.10 Overview of SQL Command Categories",
+        "intro": "SQL commands are grouped into five categories based on what they do. Understanding these categories helps you know which command to use for each task.",
+        "sections": [
+          {
+            "icon": "📂",
+            "title": "The five SQL command categories",
+            "body": "Each category handles a different aspect of database management:",
+            "bullets": [
+              "DDL (Data Definition Language) — defines and manages database structure. Commands: CREATE, ALTER, DROP, TRUNCATE.",
+              "DML (Data Manipulation Language) — manages and modifies data inside tables. Commands: INSERT, UPDATE, DELETE.",
+              "DQL (Data Query Language) — retrieves data from tables. Command: SELECT.",
+              "DCL (Data Control Language) — manages access and permissions. Commands: GRANT, REVOKE.",
+              "TCL (Transaction Control Language) — manages transactions. Commands: COMMIT, ROLLBACK, SAVEPOINT."
+            ]
+          },
+          {
+            "icon": "💻",
+            "title": "Quick examples",
+            "body": "One example from each category:",
+            "code": "-- DDL\nCREATE TABLE users (id INT, name VARCHAR(100));\n\n-- DML\nINSERT INTO users VALUES (1, 'Alice');\n\n-- DQL\nSELECT * FROM users;\n\n-- DCL\nGRANT SELECT ON users TO 'john';\n\n-- TCL\nCOMMIT;"
+          }
+        ]
+      }
+    }
+  ]
+}
